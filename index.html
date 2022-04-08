@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="assents/css/reset.css" />
+  <link rel="stylesheet" href="assents/css/calculator.css" />
+  <!-- <link rel="stylesheet" href="assents/css/calculator.css"> --->
+</head>
+<body>
+  <content class="all">
+    <header>
+      <h1>CALCULATOR</h1>
+    </header>
+    <main>
+      <input data-form-input type="text" />
+
+      <content class="numbers">
+        <content class="colum1">
+          <button class="calculatorBotton" data-form-button1>1</button>
+          <button class="calculatorBotton" data-form-button1>2</button>
+          <button class="calculatorBotton" data-form-button3>3</button>
+          <button class="calculatorBotton" data-form-buttonSum>+</button>
+        </content>
+        <content class="colum2">
+          <button class="calculatorBotton" data-form-button4>4</button>
+          <button class="calculatorBotton" data-form-button5>5</button>
+          <button class="calculatorBotton" data-form-button6>6</button>
+          <button class="calculatorBotton" data-form-buttonSubtraction>-</button>
+        </content>
+        <content class="colum3">
+          <button class="calculatorBotton" data-form-button7>7</button>
+          <button class="calculatorBotton" data-form-button8>8</button>
+          <button class="calculatorBotton" data-form-button9>9</button>
+          <button class="calculatorBotton" data-form-buttonMultiplication>X</button>
+        </content>
+        <content class="colum4">
+          <button class="calculatorBotton" data-form-button0>0</button>
+          <button class="turnOn" data-form-buttonPlay>Turn On</button>
+          <button class="calculatorBotton" data-form-buttonDivision>/</button>
+        </content>
+      </content>
+    </main>
+  </content>
+</body>
+
+<script>
+  const input = document.querySelector('[data-form-input]')
+
+  function registerNumber1() {
+    number1 = parseInt(prompt('Digite o primeiro número'))
+
+    if (/^\d+$/.test(number1)) {
+      selectOperation()
+    } else {
+      registerNumber1()
+    }
+
+    input.value = number1
+  }
+
+  function selectOperation() {
+    chosenOperation = prompt(
+      '+ Adição. - Subtração. * Multiplicação. / Divisão'
+    )
+
+    if (chosenOperation == '+') {
+      number2 = parseInt(prompt('Digite o segundo número'))
+      result = number1 + number2
+      if (isNaN(result)) {
+        selectOperation()
+      }
+      alert(result)
+    } else if (chosenOperation == '-') {
+      number2 = parseInt(prompt('Digite o segundo número'))
+      result = number1 - number2
+      if (isNaN(result)) {
+        selectOperation()
+      }
+      alert(result)
+    } else if (chosenOperation == '*') {
+      number2 = parseInt(prompt('Digite o segundo número'))
+      result = number1 * number2
+      if (isNaN(result)) {
+        selectOperation()
+      }
+      alert(result)
+    } else if (chosenOperation == '/') {
+      number2 = parseInt(prompt('Digite o segundo número'))
+      result = number1 / number2
+      if (isNaN(result)) {
+        selectOperation()
+      }
+      alert(result)
+    } else {
+      selectOperation()
+    }
+
+    input.value = number1 + chosenOperation + result
+  }
+
+  var buttonPlay = document.querySelector('[data-form-buttonPlay]')
+  buttonPlay.onclick = registerNumber1
+
+  //display
+
+  var button0 = document.querySelector('[data-form-button1]')
+  var button1 = document.querySelector('[data-form-button1]')
+  var button2 = document.querySelector('[data-form-button1]')
+  var button3 = document.querySelector('[data-form-button1]')
+  var button4 = document.querySelector('[data-form-button3]')
+  var button5 = document.querySelector('[data-form-button3]')
+  var button6 = document.querySelector('[data-form-button6]')
+  var button7 = document.querySelector('[data-form-button7]')
+  var button8 = document.querySelector('[data-form-button8]')
+  var button9 = document.querySelector('[data-form-button9]')
+  var buttonSum = document.querySelector('[data-form-buttonSum]')
+  var buttonSubtraction = document.querySelector('[data-form-buttonSubtraction]')
+  var buttonMultiplication = document.querySelector('[data-form-buttonMultiplication]')
+  var buttonDivision = document.querySelector('[data-form-buttonDivision]')
+
+  var x = ''
+
+  function buttonsPressOn() {
+    buttonPressOn = 0
+  }
+
+  function buttonsPress() {
+    buttons = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    buttonPress = "1"
+    x = buttonPress + x
+    input.value = x
+
+  }
+  
+  document.querySelector('[data-form-button1]').onclick = buttonsPress
+
+</script>
